@@ -31,8 +31,11 @@ ul { list-style: none; }
 .btn-pink:hover { background: #c44da0; transform: translateY(-1px); }
 
 .btn-yellow-lg {
-    background: #FFD600; color: #FFF; padding: 12px 12px;
+    background: #FFD600; color: #FFF; padding: 10px 14px;
     border: none;  font-weight: 700; font-size: 1rem; cursor: pointer;
+    margin-top: 60px;
+    width: 215px;
+    height: 40px;
 }
 
 /* --- NAVBAR CENTRADO --- */
@@ -103,7 +106,27 @@ ul { list-style: none; }
     border-radius: 50%;
     position: absolute; top: 250px; right: 1600px;
     z-index: 1;
+
 }
+
+.circle-bg-pink {
+    width: 185px; height: 185px;
+    border: 28px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 210px; right: 1650px;
+    z-index: 1;
+}
+
+.circle-bg-pink-2 {
+    width: 308px; height: 308px;
+    border: 28px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 80px; right: -190px;
+    z-index: 1;
+}
+
 
 .hero-container { display: flex; width: 100%; align-items: center; }
 
@@ -137,24 +160,24 @@ ul { list-style: none; }
 
 
 /* --- STATS SECTION --- */
-.stats { background: var(--pink); padding: 80px 0; text-align: center; position: relative; }
+.stats { background: var(--pink); padding: 140px 0; text-align: center; position: relative; }
 
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; }
 
 .stat-card {
-    background: white; padding: 40px 20px; border-radius: 10px;
+    background: white; padding: 20px 20px; border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    flex-direction: column; align-items: center; justify-content: center;
     min-height: 220px;
 }
 
-.icon-box { font-size: 2rem; margin-bottom: 15px; -webkit-text-stroke: 1px; }
+.icon-box { font-size: 2rem; margin-bottom: 20px; -webkit-text-stroke: 1px; }
 .icon-blue { color: transparent; -webkit-text-stroke: 1.5px #6CBCEB; }
 .icon-yellow { color: transparent; -webkit-text-stroke: 1.5px #FFD700; }
 .icon-pink { color: transparent; -webkit-text-stroke: 1.5px #D65DB1; }
 .icon-green { color: transparent; -webkit-text-stroke: 1.5px #7ED321; }
 
-.stat-card h3 { font-size: 2.5rem; margin-bottom: 70px; font-weight: 500; font-family: var(--font-body); }
+.stat-card h3 { font-size: 2.5rem; margin-bottom: 40px; font-weight: 500; font-family: var(--font-body); }
 .stat-card p { font-size: 1.125rem; color: #666; font-weight: 400; }
 
 /* --- BLUE SECTION --- */
@@ -164,10 +187,18 @@ ul { list-style: none; }
     border: 28px solid rgba(255,255,255,0.1); border-radius: 50%;
     position: absolute; top: 10%; right: -350px;
 }
+.circle-faint-blue-2 {
+    width: 308px; height: 308px;
+    border: 28px solid rgb(255, 255, 255);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 45%; right: 92%;
+    z-index: 1;
+}
 
 .split-layout { display: flex; align-items: center; gap: 80px; }
-.text-content h2 { font-size: 2rem; margin-bottom: 15px; margin-top: 30px; font-weight: 500; color: white; }
-.text-content p { font-size: 1rem; opacity: 0.9; margin-bottom: 20px; color: white; font-weight: 500; width: 47%; }
+.text-content h2 { font-size: 2rem; margin-bottom: 15px; margin-top: 30px; font-weight: 500; color: white; width: 491px; height: 51px; }
+.text-content p { font-size: 1rem; opacity: 0.9; margin-bottom: 80px; color: white; font-weight: 500; width: 388px; height: 130px; }
 
 .image-content { position: relative; }
 .image-circle-frame {
@@ -188,14 +219,14 @@ ul { list-style: none; }
 
 /* --- WE CAN HELP --- */
 .we-can-help { padding: 80px 0 0; text-align: center; background: white; }
-.we-can-help h2 { font-size: 2.5rem; margin-bottom: 30px; font-weight: 500; }
-.subtitle-box { max-width: 900px; margin: 0 auto 30px; text-align: center; }
-.subtitle-box p { margin-bottom: 20px; font-size: 0.95rem; color: #666; }
+.we-can-help h2 { font-size: 2rem; margin-bottom: 30px; font-weight: 500; }
+.subtitle-box { max-width: 900px; margin: 10 auto; text-align: center; }
+.subtitle-box p { margin-bottom: 20px; font-size: 1rem; color: #666; width: 1140px; height: 78px; }
 .team-img-wrapper { margin-top: 50px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-.team-img-wrapper img { width: 100%; display: block; }
+.team-img-wrapper img { width: 1397.45px;height: 933.09px; display: block; }
 
 /* --- WHAT YOU GET --- */
-.what-you-get { padding: 80px 0; background: #fff; text-align: center; }
+.what-you-get { padding: 80px 0; background: #F9F9F9; text-align: center; }
 .what-you-get h2 { margin-bottom: 50px; font-size: 2.2rem; }
 
 .cards-row { display: flex; justify-content: center; gap: 30px; }
