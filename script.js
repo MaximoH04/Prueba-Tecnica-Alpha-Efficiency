@@ -1,13 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- MENU HAMBURGUESA ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Opcional: Animación del icono hamburguesa si quisieras agregar clases CSS
+            hamburger.classList.toggle('open'); 
+        });
+    }
     
-    // --- FAQ ACCORDION ---
+    // --- FAQ ACCORDION (TU CÓDIGO EXISTENTE) ---
     const faqHeads = document.querySelectorAll('.faq-head');
     
     faqHeads.forEach(head => {
         head.addEventListener('click', () => {
             const item = head.parentElement;
             
-            // Cerrar otros (Opcional, para comportamiento de acordeón estricto)
             document.querySelectorAll('.faq-item').forEach(other => {
                 if(other !== item) {
                     other.classList.remove('active');
@@ -15,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Toggle actual
             item.classList.toggle('active');
             const body = item.querySelector('.faq-body');
             
@@ -27,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- COUNTDOWN ---
+
     const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 15); // 15 días
+    targetDate.setDate(targetDate.getDate() + 15); 
 
     function updateTimer() {
         const now = new Date().getTime();
@@ -42,10 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerText = d < 10 ? '0'+d : d;
-        document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
-        document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
-        document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
+        // Verificar que los elementos existan antes de asignar
+        if(document.getElementById('days')) document.getElementById('days').innerText = d < 10 ? '0'+d : d;
+        if(document.getElementById('hours')) document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
+        if(document.getElementById('minutes')) document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
+        if(document.getElementById('seconds')) document.getElementById('seconds').innerText = s < 10 ? '0'+s : s;
     }
     
     setInterval(updateTimer, 1000);
