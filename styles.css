@@ -33,10 +33,11 @@ ul { list-style: none; }
 
 .btn-yellow-lg {
     background: #FFD600; color: #FFF; padding: 10px 14px;
-    border: none;  font-weight: 700; font-size: 1rem; cursor: pointer;
+    border: none;  font-weight: 600; font-size: 1rem; cursor: pointer;
     margin-top: 60px;
     width: 215px;
     height: 40px;
+    font-family: "Montserrat";
 }
 
 /* --- NAVBAR CENTRADO --- */
@@ -235,7 +236,6 @@ ul { list-style: none; }
 
 .subtitle-box { 
     max-width: 900px; /* Ancho máximo contenedor */
-    margin: 0 auto 40px; 
     text-align: center; 
     padding: 0 20px; /* Margen lateral en móviles */
 }
@@ -245,8 +245,7 @@ ul { list-style: none; }
     font-size: 1rem; 
     color: #666; 
     line-height: 1.8;
-    /* CORRECCIÓN CRÍTICA: Quitamos width/height fijos */
-    width: 100%; 
+    width: 1140px; 
     height: auto; 
 }
 
@@ -282,6 +281,34 @@ ul { list-style: none; }
     font-weight: 500;
 }
 
+.circle-what-you-get {
+    width: 386px; height: 386px;
+    border: 28px solid rgb(255, 255, 255);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 15%; right: 112%;
+    z-index: 1;
+}
+
+.circle-what-you-get-2 {
+    width: 158px; height: 158px;
+    border: 28px solid rgb(255, 255, 255);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 55%; right: -10%;
+    z-index: 1;
+}
+
+.circle-what-you-get-3 {
+    width: 279px; height: 279px;
+    border: 28px solid rgb(255, 255, 255);
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: -8%; right: -20%;
+    z-index: 1;
+}
+
+
 .cards-row { 
     display: flex; 
     justify-content: center; 
@@ -299,6 +326,7 @@ ul { list-style: none; }
     max-width: 450px;
     min-width: 300px;
     height: 391px;
+    margin-bottom: 40px;
 }
 
 .title-blue { 
@@ -329,7 +357,7 @@ ul { list-style: none; }
 
 .feature-card ul { padding-left: 10px; }
 .feature-card ul li { 
-    margin-bottom: 21px; 
+    margin-bottom: 23px; 
     font-size: 1rem; 
     color: #333; 
     list-style-type: "•   ";
@@ -348,6 +376,33 @@ ul { list-style: none; }
     text-align: left; /* Alineado a la izquierda según diseño */
     font-size: 2.2rem; 
     font-weight: 500;
+}
+
+.circle-faq {
+    width: 410px; height: 410px;
+    border: 28px solid #F9F9F9;
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 48%; right: 112%;
+    z-index: 1;
+}
+
+.circle-faq-2 {
+    width: 269px; height: 269px;
+    border: 28px solid #F9F9F9;
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 3%; right: -26%;
+    z-index: 1;
+}
+
+.circle-faq-3 {
+    width: 124px; height: 124px;
+    border: 28px solid #F9F9F9;
+    color: #ffffff;
+    border-radius: 50%;
+    position: absolute; top: 75%; right: -14%;
+    z-index: 1;
 }
 
 .faq-list { 
@@ -429,7 +484,7 @@ ul { list-style: none; }
     border: 28px solid #ffffff;
     border-radius: 50%;
     position: absolute;
-    top: 40%; 
+    top: 35%; 
     left: 60px;
     z-index: 0;
 }
@@ -460,7 +515,7 @@ ul { list-style: none; }
 
 .footer-desc { 
     color: #555; 
-    margin-bottom: 35px; 
+    margin-bottom: 45px; 
     font-size: 1rem; 
     line-height: 1.6;
     max-width: 443px; /* Controla el ancho del párrafo */
@@ -495,13 +550,13 @@ ul { list-style: none; }
 
 .social-links { 
     display: flex; 
-    gap: 12px; 
+    gap: 21px; 
     margin-top: 40px; 
 }
 
 .social-circle {
-    width: 38px; 
-    height: 38px; 
+    width: 30px; 
+    height: 30px; 
     background: var(--pink);
     border-radius: 50%; 
     display: flex; 
@@ -510,7 +565,7 @@ ul { list-style: none; }
     transition: 0.3s;
 }
 .social-circle img {
-    width: 16px; height: 16px;
+    width: 35px; height: 35px;
 }
 .social-circle:hover { 
     background: #c44da0; 
@@ -553,6 +608,13 @@ ul { list-style: none; }
     position: relative;
     z-index: 1;
 }
+
+.copyright {
+    margin-left: 41%;
+    font-size: 1rem;
+}
+
+
 
 /* ================= RESPONSIVE FOOTER ================= */
 @media (max-width: 968px) {
