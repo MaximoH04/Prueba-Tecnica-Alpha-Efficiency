@@ -134,7 +134,7 @@ ul { list-style: none; }
 
 .hero-content { flex: 1; padding-right: 50px; }
 .hero-content h1 { font-size: 3.7rem; line-height: 1.2; margin-bottom: 20px; color: #333333; }
-.hero-desc { font-size: 1.2rem; margin-bottom: 30px; max-width: 500px; color: #333333; }
+.hero-desc { font-size: 1.2rem; margin-bottom: 30px; width: 550px; color: #333333; }
 
 .hero-visual { flex: 0.8; display: flex; justify-content: flex-end; position: relative; z-index: 2; }
 
@@ -149,7 +149,6 @@ ul { list-style: none; }
     min-width: 629px;
     height: 321px;
     position: relative;
-    right: 10px;
     margin-bottom: 30%;
     backdrop-filter: blur(67px);
 }
@@ -201,6 +200,7 @@ ul { list-style: none; }
 .split-layout { display: flex; align-items: center; gap: 80px; }
 .text-content h2 { font-size: 2rem; margin-bottom: 15px; margin-top: 30px; font-weight: 500; color: white; width: 491px; height: 51px; }
 .text-content p { font-size: 1rem; opacity: 0.9; margin-bottom: 80px; color: white; font-weight: 500; width: 388px; height: 130px; }
+
 
 .image-content { position: relative; }
 .image-circle-frame {
