@@ -138,6 +138,10 @@ ul { list-style: none; }
 
 .hero-visual { flex: 0.8; display: flex; justify-content: flex-end; position: relative; z-index: 2; }
 
+.spots {
+    display: none;
+}
+
 /* --- COUNTDOWN BOX AJUSTADA (Wider) --- */
 .countdown-box {
     background: rgba(255, 255, 255, 0.3);
@@ -220,6 +224,58 @@ ul { list-style: none; }
 }
 
 /* --- WE CAN HELP --- */
+
+/* 1. CONFIGURACIÓN BASE (ESCRITORIO) 
+   Aquí definimos cómo se ve en pantallas grandes (como tu última imagen) */
+.help-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.help-text {
+    max-width: 900px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* --- GESTIÓN DE IMÁGENES EN ESCRITORIO --- */
+/* Ocultamos la imagen de móvil por defecto */
+.img-mobile-view {
+    display: none;
+}
+
+/* Mostramos y configuramos la imagen de escritorio */
+.img-desktop-view {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* --- GESTIÓN DEL ORDEN EN ESCRITORIO --- */
+.we-can-help h2 { order: 1; margin-bottom: 30px; }
+.text-1         { order: 2; }
+.text-2         { order: 3; }
+.text-3         { order: 4; }
+
+.we-can-help .btn-pink { 
+    order: 5; 
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+/* La imagen de escritorio va al final (orden 6) */
+.img-desktop-view { order: 6; }
+
+
+/* Truco texto botón: Ocultar texto móvil en escritorio */
+.btn-text-mobile { display: none; }
+.btn-text-desktop { display: inline; }
+
 .we-can-help { 
     padding: 80px 0 0; 
     text-align: center; 
@@ -249,24 +305,6 @@ ul { list-style: none; }
     height: auto; 
 }
 
-.team-img-wrapper { 
-    margin-top: 50px; 
-    width: 100%;
-    max-width: 1000px; 
-    margin-left: auto; 
-    margin-right: auto; 
-    /* Para que la imagen se corte abajo si es necesario o se asiente bien */
-    display: flex;
-    justify-content: center;
-}
-
-.team-img-wrapper img { 
-    /* CORRECCIÓN CRÍTICA: Hacemos la imagen responsiva */
-    width: 100%; 
-    max-width: 100%; 
-    height: auto; 
-    display: block; 
-}
 
 /* --- WHAT YOU GET --- */
 .what-you-get { 
@@ -622,9 +660,7 @@ ul { list-style: none; }
     /* --- NAVBAR MOBILE --- */
     .navbar { 
         padding: 10px 0; 
-        background: white; 
         position: fixed;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         width: 100%;
         z-index: 1000;
     }
@@ -655,7 +691,7 @@ ul { list-style: none; }
         display: flex; 
     }
 
-    /* --- HERO SECTION MOBILE --- */
+/* --- HERO SECTION MOBILE --- */
     .hero { 
         flex-direction: column; 
         padding-top: 70px; 
@@ -667,84 +703,95 @@ ul { list-style: none; }
     }
     
     .hero-yellow-bg { 
-        display: none;
+        width: 52%;
     }
     
     .hero-container { 
+        display: flex;
         flex-direction: column; 
-        gap: 25px;
         padding: 25px 0;
     }
     
-    .hero-container { 
-        flex-direction: column; 
-        gap: 20px; /* Reducir espacio entre elementos */
-        padding: 25px 0;
-    }
-    
-    /* Mantener el orden natural: título primero, luego contador, luego descripción y botón */
+    /* CLAVE: Esto "desenvuelve" los elementos para que podamos ordenarlos junto con el contador */
     .hero-content { 
-        order: 1; /* Primero el contenido (título, descripción, botón) */
-        text-align: center; 
-        padding-right: 0;
-        width: 100%;
+        display: contents; 
     }
     
-    .hero-visual { 
-        order: 2; /* Segundo el contador */
-        width: 100%; 
-        justify-content: center; 
-        margin-top: 0; /* Quitar margen superior */
-        margin-bottom: 10px; /* Agregar margen inferior */
-    }
-    
-    /* Ajustar espaciado del título */
+    /* ORDEN 1: EL TÍTULO */
     .hero-content h1 {
-        font-size: 1.825rem;
+        order: 1;
+        font-size: 1.875rem;
         line-height: 1.3;
-        margin-bottom: 15px;
-        margin-top: 0;
+        margin-bottom: 25px; /* Espacio debajo del título antes del contador */
+        margin-top: 25px;
         color: #333;
         font-weight: 400;
+        width: 260px;
         padding: 0 20px;
         text-align: center;
     }
-    
-    /* Ajustar la descripción - quitar margen superior */
-    .hero-desc {
-        font-size: 0.8rem;
-        margin: 0 0 20px 0; /* Quitar margen superior, mantener inferior */
-        color: #666;
-        line-height: 1.4;
-        max-width: 100%;
-        padding: 0 15px;
-        text-align: left;
+
+    .spots {
+        display:inline;
+        order: 1;
+        font-weight: 400;
+        font-family: "Montserrat";
+        margin-bottom: 19px;
+    }
+
+    /* ORDEN 2: EL CONTADOR */
+    .hero-visual { 
+        order: 2; 
+        width: 100%; 
+        display: flex;
+        justify-content: center; 
+        margin-bottom: 25px; /* Espacio entre contador y descripción */
     }
     
-    /* Ajustar el botón */
-    .btn-pink {
-        margin-top: 0; /* Quitar margen superior del botón */
-    }
-    
-    /* El contador mantiene sus estilos pero ajustamos márgenes */
+    /* Ajustes del contador */
     .countdown-box { 
         width: 90%;
         max-width: 281px;
         min-width: auto;
         height: 159px;
         padding: 20px 15px;
-        margin: 0 auto 15px auto; /* Margen inferior para separar de la descripción */
-        border-radius: 50px;
+        margin: 0; /* Quitamos márgenes automáticos */
+        border-radius: 30px;
         background: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(67px);
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
+    /* ORDEN 3: LA DESCRIPCIÓN */
+    .hero-desc {
+        order: 3;
+        font-size: 0.9rem;
+        margin: 0 0 30px 0; 
+        color: #666;
+        line-height: 1.5;
+        width: 80%;
+        padding: 0 20px;
+        text-align: left;
+    }
+    
+    /* ORDEN 4: EL BOTÓN */
+    .hero-content .btn-pink {
+        order: 4;
+        width: 60%;
+        max-width: 280px; /* Un poco más ancho */
+        padding: 12px 18px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 auto 20px auto; /* Centrado y con margen abajo */
+        display: block;
+    }
+
+    /* Estilos internos del contador (sin cambios de orden) */
     .offer-text { 
         margin-bottom: 20px;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         color: #333;
-        font-weight: 500;
+        font-weight: 400;
         text-align: center;
     }
     
@@ -763,15 +810,15 @@ ul { list-style: none; }
     .label-blue {
         font-size: 0.65rem;
         color: var(--blue-text);
-        letter-spacing: 0.5px;
-        font-weight: 600;
+        letter-spacing: 1.2px;
+        font-weight: 500;
         margin-bottom: 30px;
         text-transform: uppercase;
     }
     
     .number {
         font-size: 1.5rem;
-        font-weight: 700;
+        font-weight: 500;
         color: #222;
         line-height: 1;
         font-family: var(--font-body);
@@ -780,10 +827,9 @@ ul { list-style: none; }
     .btn-pink {
         width: 100%;
         max-width: 250px;
-        padding: 10px 18px;
-        font-size: 0.85rem;
+        padding: 12px 18px;
+        font-size: 1rem;
         font-weight: 600;
-        border-radius: 4px;
         margin: 0 auto;
         display: block;
     }
@@ -797,13 +843,13 @@ ul { list-style: none; }
     .stats-grid { 
         grid-template-columns: repeat(2, 1fr); 
         gap: 12px;
-        padding: 0 40px;
+        padding: 0 20px;
     }
     
     .stat-card {
-        min-height: 110px;
+        min-height: 157px;
         padding: 15px 8px;
-        border-radius: 10px;
+        border-radius: 20px;
         text-align: center;
         background: white;
     }
@@ -821,32 +867,34 @@ ul { list-style: none; }
         font-size: 1.2rem;
         margin-bottom: 5px;
         font-weight: 600;
+        margin-top: -10px;
     }
     
     .stat-card p {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         line-height: 1.2;
         color: #666;
+        width: 123px;
+        margin-top: 26px;
     }
     
     .btn-yellow-lg {
-        width: 100%;
+        width: 70%;
         max-width: 250px;
         padding: 10px 18px;
-        font-size: 0.85rem;
+        font-size: 1rem;
         margin-top: 20px;
-        border-radius: 4px;
         display: block;
         margin-left: auto;
         margin-right: auto;
         background: #FFD600;
-        color: #333;
+        color: #ffffff;
         border: none;
     }
     
     /* BLUE SECTION MOBILE - EXACTO COMO LA IMAGEN */
     .blue-section { 
-        padding: 35px 0; 
+        padding: 50px 0; 
         background: var(--blue-bg);
     }
     
@@ -858,32 +906,35 @@ ul { list-style: none; }
     
     .text-content { 
         text-align: left;
-        order: 2;
+        order: 1;
     }
     
     .text-content h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         margin-bottom: 12px;
         margin-top: 0;
-        width: 100%;
+        width: 70%;
         height: auto;
         line-height: 1.3;
         color: white;
-        font-weight: 600;
+        font-weight: 400;
+        margin-left: 30px;
     }
     
     .text-content p {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
         margin-bottom: 15px;
-        width: 100%;
+        width: 84%;
         height: auto;
-        line-height: 1.4;
+        line-height: 1.8;
         opacity: 0.9;
         color: white;
+        font-weight: 500;
+        margin-left: 30px;
     }
     
     .image-content {
-        order: 1;
+        order: 2;
         text-align: center;
     }
     
@@ -897,7 +948,7 @@ ul { list-style: none; }
         margin-top: 10px;
     }
     
-    /* WE CAN HELP SECTION MOBILE - EXACTO COMO LA IMAGEN */
+    /* WE CAN HELP SECTION MOBILE */
     .we-can-help {
         padding: 35px 0 0;
         background: white;
@@ -934,6 +985,60 @@ ul { list-style: none; }
         border-radius: 6px;
     }
     
+.help-flex-container {
+        align-items: flex-start;
+        text-align: left;
+        padding: 0 20px;
+    }
+
+    /* --- GESTIÓN DE IMÁGENES EN MÓVIL --- */
+    /* ¡OCULTAMOS la imagen de escritorio! */
+    .img-desktop-view {
+        display: none;
+    }
+    
+    /* ¡MOSTRAMOS la imagen de móvil! */
+    .img-mobile-view {
+        display: block;
+        width: 100%;
+        margin: 30px 0; /* Margen arriba y abajo */
+    }
+
+    /* --- REORDENAMIENTO MÓVIL --- */
+    .we-can-help h2 { 
+        order: 1; 
+        text-align: left;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-left: 20px;
+    }
+    
+    .text-1 { order: 2; font-size: 1rem; width: 281px; margin-left: 20px; }
+    .text-2 { order: 3; font-size: 1rem; width: 281px; margin-left: 20px; }
+
+    /* La imagen de MÓVIL se pone en el medio (orden 4) */
+    .img-mobile-view { order: 4; }
+
+    .text-3 { 
+        order: 5; 
+        font-size: 1rem;
+        margin-bottom: 30px;
+        width: 281px;
+        margin-left: 20px;
+    }
+
+    .we-can-help .btn-pink {
+        order: 6;
+        width: 60%;
+        max-width: none;
+        margin-bottom: 40px;
+    }
+
+    /* Cambiar texto del botón para móvil */
+    .btn-text-desktop { display: none; }
+    .btn-text-mobile { display: inline; }
+
+
     /* WHAT YOU GET SECTION MOBILE - EXACTO COMO LA IMAGEN */
     .what-you-get {
         padding: 35px 0;
@@ -941,38 +1046,37 @@ ul { list-style: none; }
     }
     
     .what-you-get h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         margin-bottom: 20px;
-        padding: 0 15px;
+        padding: 0 25px;
         line-height: 1.3;
-        text-align: center;
-        font-weight: 600;
+        text-align: left;
+        font-weight: 400;
+        width: 250px;
     }
     
     .cards-row { 
         flex-direction: column; 
         align-items: center; 
         gap: 12px;
-        padding: 0 10px;
+        padding: 0 25px;
     }
     
     .feature-card {
-        height: auto;
-        margin-bottom: 12px;
-        width: 100%;
-        max-width: 100%;
-        padding: 18px 12px;
-        border-radius: 10px;
+        margin-bottom: 39px;
+
+        padding: 18px 20px;
+        border-radius: 20px;
         text-align: left;
         background: white;
     }
     
     .title-blue, 
     .title-pink {
-        font-size: 1rem;
+        font-size: 1.125rem;
         margin-bottom: 12px;
         text-align: center;
-        font-weight: 600;
+        font-weight: 400;
     }
     
     .divider {
@@ -986,8 +1090,8 @@ ul { list-style: none; }
     }
     
     .feature-card ul li {
-        font-size: 0.75rem;
-        margin-bottom: 8px;
+        font-size: 0.875rem;
+        margin-bottom: 20px;
         line-height: 1.3;
         color: #333;
     }
@@ -999,23 +1103,26 @@ ul { list-style: none; }
     }
     
     .faq-section h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 1.3rem;
-        font-weight: 600;
+        text-align: left;
+        margin-bottom: 62px;
+        font-size: 1.9rem;
+        font-weight: 400;
+        margin-left: 15px;
     }
     
     .faq-list {
-        gap: 10px;
+        gap: 12px;
+        margin-left: 15px;
     }
     
     .faq-head {
-        padding: 12px 15px;
-        font-size: 0.8rem;
-        border-radius: 6px;
+        padding: 8px 4px;
+        font-size: 0.975rem;
+        border-radius: 12px;
         background: var(--grey-light);
         color: #444;
-        font-weight: 500;
+        font-weight: 400;
+        line-height: 2;
     }
     
     .faq-body {
@@ -1023,11 +1130,16 @@ ul { list-style: none; }
     }
     
     .faq-body p {
-        font-size: 0.75rem;
+        font-size: 0.775rem;
         padding-bottom: 12px;
         color: #666;
         line-height: 1.4;
     }
+
+    .arrows {
+        stroke-width: 3;
+    }
+
     
     /* FOOTER MOBILE - EXACTO COMO LA IMAGEN */
     .main-footer {
@@ -1055,8 +1167,8 @@ ul { list-style: none; }
     }
     
     .footer-desc {
-        max-width: 100%;
-        font-size: 0.8rem;
+        max-width: 300px;
+        font-size: 0.875rem;
         line-height: 1.4;
         text-align: left;
         margin-bottom: 20px;
@@ -1068,22 +1180,20 @@ ul { list-style: none; }
     }
     
     .contact-row {
-        justify-content: left;
-        text-align: left;
-        flex-direction: column;
-        gap: 4px;
+        gap: 17px;
         margin-bottom: 12px;
     }
     
     .contact-row p {
-        font-size: 0.75rem;
+        font-size: 0.875rem;
         color: #555;
+        width: 170px;
     }
     
     .social-links { 
-        justify-content: center; 
-        margin-top: 20px;
-        gap: 12px;
+        justify-content: left; 
+        margin-top: -48px;
+        gap: 21px;
     }
     
     .social-circle {
@@ -1097,19 +1207,19 @@ ul { list-style: none; }
     }
     
     .footer-col h3 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
+        font-size: 1.25rem;
+        margin-bottom: 22px;
         margin-top: 0;
         color: #333;
-        font-weight: 600;
+        font-weight: 400;
     }
     
     .footer-col ul li {
-        margin-bottom: 12px;
+        margin-bottom: 24px;
     }
     
     .footer-col ul li a {
-        font-size: 0.8rem;
+        font-size: 0.875rem;
         color: #555;
     }
     
@@ -1122,9 +1232,9 @@ ul { list-style: none; }
     
     .copyright {
         margin-left: 0;
-        width: 100%;
+        width: 253px;
         text-align: left;
-        font-size: 0.7rem;
+        font-size: 0.875rem;
         color: #888;
     }
     
@@ -1216,7 +1326,7 @@ ul { list-style: none; }
     .hamburger span {
         width: 20px;
         height: 2px;
-        background: #333;
+        background: #DD71C6;
         transition: all 0.3s ease;
     }
     
@@ -1237,14 +1347,13 @@ ul { list-style: none; }
 @media (max-width: 768px) {
     .image-content img,
     .team-img-wrapper img {
-        max-width: 100%;
+        width: 400px;
         height: auto;
-        display: block;
-        margin: 0 auto;
+        margin: 0 -30px;
     }
 }
 
-/* CORRECCIÓN FOOTER MOBILE */
+/* FOOTER MOBILE */
 @media (max-width: 768px) {
     .footer-grid > div:nth-child(1),
     .footer-grid > div:nth-child(2),
@@ -1262,86 +1371,13 @@ ul { list-style: none; }
     .footer-bottom .copyright {
         order: 1;
         margin-left: 0;
-        width: 100%;
     }
     
     .contact-details {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: left;
     }
     
-    .contact-row {
-        justify-content: center;
-        text-align: center;
-    }
 }
 
-/* AJUSTES ESPECÍFICOS PARA 375px EXACTO */
-@media (max-width: 768px) {
-    /* Asegurar que todos los textos estén alineados como en la imagen */
-    .hero-content,
-    .text-content,
-    .we-can-help .container,
-    .what-you-get .container,
-    .faq-section .container {
-        text-align: center;
-    }
-    
-    .hero-content h1,
-    .we-can-help h2,
-    .what-you-get h2,
-    .faq-section h2 {
-        text-align: center;
-    }
-    
-    .subtitle-box p {
-        text-align: left;
-    }
-    
-    /* Espaciado específico para secciones */
-    .stats {
-        padding: 35px 0;
-    }
-    
-    .blue-section {
-        padding: 35px 0;
-    }
-    
-    .we-can-help {
-        padding: 35px 0 0;
-    }
-    
-    .what-you-get {
-        padding: 35px 0;
-    }
-    
-    .faq-section {
-        padding: 35px 0;
-    }
-    
-    /* Botones centrados */
-    .btn-pink,
-    .btn-yellow-lg {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-    
-    /* Ajustes específicos de espaciado */
-    .hero-container {
-        gap: 20px;
-    }
-    
-    .split-layout {
-        gap: 20px;
-    }
-    
-    .cards-row {
-        gap: 10px;
-    }
-    
-    .faq-list {
-        gap: 8px;
-    }
-}
