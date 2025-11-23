@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('nav-links');
     
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
+            hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
+            // Bloqueamos/Desbloqueamos el scroll del cuerpo
+            document.body.classList.toggle('no-scroll');
         });
         
         // Cerrar menú al hacer clic en un enlace
@@ -16,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
+                document.body.classList.remove('no-scroll'); // Reactivar scroll
             });
         });
         
