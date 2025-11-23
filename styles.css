@@ -653,10 +653,29 @@ ul { list-style: none; }
     font-size: 1rem;
 }
 
+.hero,
+.stats,
+.blue-section,
+.we-can-help,
+.what-you-get,
+.faq-section,
+.main-footer {
+    overflow: hidden;
+    position: relative; /* Asegura que el overflow funcione sobre los hijos absolutos */
+}
+
+
 /* ================= RESPONSIVE MOBILE 375px EXACTO ================= */
 
 /* Móviles (desde 375px hacia abajo) */
 @media (max-width: 768px) {
+
+
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
     /* --- NAVBAR MOBILE --- */
     .navbar { 
         padding: 10px 0; 
@@ -1238,22 +1257,91 @@ ul { list-style: none; }
         color: #888;
     }
     
-    /* OCULTAR TODOS LOS ELEMENTOS DECORATIVOS EN MÓVIL */
-    .circle-white-lg,
-    .circle-white-lg-2,
-    .circle-bg-pink,
-    .circle-bg-pink-2,
-    .circle-faint-blue,
-    .circle-faint-blue-2,
-    .circle-what-you-get,
-    .circle-what-you-get-2,
-    .circle-what-you-get-3,
-    .circle-faq,
-    .circle-faq-2,
-    .circle-faq-3,
-    .footer-circle-left,
+/* --- CÍRCULOS RESPONSIVE PARA MÓVIL --- */
+
+    /* Regla General para todos los círculos en móvil */
+    .circle-white-lg, .circle-white-lg-2,
+    .circle-bg-pink, .circle-bg-pink-2,
+    .circle-faint-blue, .circle-faint-blue-2,
+    .circle-what-you-get, .circle-what-you-get-2, .circle-what-you-get-3,
+    .circle-faq, .circle-faq-2, .circle-faq-3,
+    .footer-circle-left, .footer-circle-right {
+        display: block !important; /* Forzamos que se vean */
+        position: absolute;
+        border-width: 15px; /* Bordes más finos para móvil (antes eran 28px) */
+        z-index: 0;
+    }
+
+    /* --- SECCIÓN HERO --- */
+    .circle-white-lg {
+        width: 50vw; height: 50vw; /* 50% del ancho de pantalla */
+        top: 10%; right: -20%;     /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-white-lg-2 {
+        width: 30vw; height: 30vw;
+        top: 60%; left: -10%;      /* AJUSTA AQUÍ TU POSICIÓN */
+        right: auto; /* Reseteamos valores de escritorio */
+    }
+
+    /* --- SECCIÓN STATS (Rosa) --- */
+    .circle-bg-pink {
+        width: 25vw; height: 25vw;
+        top: 55%; right: 89%;        /* AJUSTA AQUÍ TU POSICIÓN */
+        border: 28px solid rgba(255,255,255,0.3);
+        opacity: 15;
+    }
+    .circle-bg-pink-2 {
+        width: 40vw; height: 40vw;
+        top: auto; bottom: 45%; right: -19%; /* AJUSTA AQUÍ TU POSICIÓN */
+        border: 28px solid rgba(255, 255, 255, 0.3);
+        opacity: 15;
+    }
+
+    /* --- SECCIÓN BLUE --- */
+    .circle-faint-blue {
+        width: 60vw; height: 60vw;
+        top: 5%; right: -30%;      /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-faint-blue-2 {
+        width: 20vw; height: 20vw;
+        top: 40%; right: 80%;      /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+
+    /* --- SECCIÓN WHAT YOU GET --- */
+    .circle-what-you-get {
+        width: 45vw; height: 45vw;
+        top: 5%; right: auto; left: -20%; /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-what-you-get-2 {
+        width: 20vw; height: 20vw;
+        top: 50%; right: -5%;      /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-what-you-get-3 {
+        width: 30vw; height: 30vw;
+        top: auto; bottom: 5%; right: 10%; /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+
+    /* --- SECCIÓN FAQ --- */
+    .circle-faq {
+        width: 50vw; height: 50vw;
+        top: 10%; right: -25%;     /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-faq-2 {
+        width: 30vw; height: 30vw;
+        top: 40%; left: -10%;      /* AJUSTA AQUÍ TU POSICIÓN */
+    }
+    .circle-faq-3 {
+        display: none; /* A veces 3 son muchos en móvil, bórralo si lo quieres ver */
+    }
+
+    /* --- FOOTER --- */
+    .footer-circle-left {
+        width: 30vw; height: 30vw;
+        top: 10%; left: -10%;      /* AJUSTA AQUÍ TU POSICIÓN */
+    }
     .footer-circle-right {
-        display: none;
+        width: 40vw; height: 40vw;
+        top: auto; bottom: 10%; right: -15%; /* AJUSTA AQUÍ TU POSICIÓN */
     }
 }
 
@@ -1318,7 +1406,6 @@ ul { list-style: none; }
     .hamburger {
         display: flex;
         flex-direction: column;
-        gap: 3px;
         cursor: pointer;
         padding: 4px;
     }
