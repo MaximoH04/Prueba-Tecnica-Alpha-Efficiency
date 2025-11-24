@@ -102,4 +102,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
     elementsToAnimate.forEach(el => observer.observe(el));
+
+    // --- 1. BACK TO TOP BUTTON ---
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        // Show button if scrolled down more than 300px
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Smooth scroll effect
+        });
+    });
+
+    // --- 2. STICKY NAVBAR ---
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        // Add 'scrolled' class if scrolled down more than 50px
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // --- 3. PRELOADER ---
+    // Hide preloader when the window fully loads (images, styles, etc.)
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('hide');
+            // Remove from DOM after transition to free up memory
+            setTimeout(() => {
+                preloader.remove();
+            }, 500);
+        }
+    });
 });
