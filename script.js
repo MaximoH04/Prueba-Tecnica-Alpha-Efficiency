@@ -1,32 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- MENU HAMBURGUESA ---
+    // --- HAMBURGER MENU ---
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     
     if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
-            // Bloqueamos/Desbloqueamos el scroll del cuerpo
+            // Toggle body scroll to prevent scrolling when menu is open
             document.body.classList.toggle('no-scroll');
         });
         
-        // Cerrar menú al hacer clic en un enlace
+        // Close menu when a link is clicked
         const navItems = navLinks.querySelectorAll('a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
-                document.body.classList.remove('no-scroll'); // Reactivar scroll
+                document.body.classList.remove('no-scroll'); 
             });
         });
         
-        // Cerrar menú al hacer clic fuera de él
+        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         });
     }
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         head.addEventListener('click', () => {
             const item = head.parentElement;
             
+            // Close other items
             document.querySelectorAll('.faq-item').forEach(other => {
                 if(other !== item) {
                     other.classList.remove('active');
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Toggle current item
             item.classList.toggle('active');
             const body = item.querySelector('.faq-body');
             
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
+    // --- COUNTDOWN TIMER ---
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 15); 
 
@@ -71,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-        // Verificar que los elementos existan antes de asignar
+        // Check existence before assigning to avoid errors
         if(document.getElementById('days')) document.getElementById('days').innerText = d < 10 ? '0'+d : d;
         if(document.getElementById('hours')) document.getElementById('hours').innerText = h < 10 ? '0'+h : h;
         if(document.getElementById('minutes')) document.getElementById('minutes').innerText = m < 10 ? '0'+m : m;
@@ -80,4 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setInterval(updateTimer, 1000);
     updateTimer();
+
+    // --- SCROLL ANIMATION (INTERSECTION OBSERVER) ---
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    elementsToAnimate.forEach(el => observer.observe(el));
 });
